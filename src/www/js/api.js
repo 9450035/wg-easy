@@ -6,6 +6,7 @@
 class API {
 
   async call({ method, path, body }) {
+    console.log(body)
     const res = await fetch(`./api${path}`, {
       method,
       headers: {
@@ -72,11 +73,12 @@ class API {
     })));
   }
 
-  async createClient({ name }) {
+  async createClient({ name },{numOfUsers},{traffic}) {
     return this.call({
       method: 'post',
       path: '/wireguard/client',
-      body: { name },
+
+      body: { name,numOfUsers,traffic},
     });
   }
 
